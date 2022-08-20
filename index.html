@@ -9,20 +9,31 @@
     <title>Coding Quiz Challenge</title>
     <link rel="icon" type="image/x-icon" href="./assets/images/favicon.jpg">
 </head>
+
 <body>
     <header>
+        <div class="highscores"><a href="./highscores.html">View Highscores</a></div>
+        <div class="timer">Time: 0</div>
         <h1>Coding Quiz Challenge</h1>
-        <div class="timer">Time: 75</div>
-        <div class="highscores">View Highscrores</div>
     </header>
 
     <main>
-        <container class="start-page">
-            <h2 class="question"> " " </h2>
-                <button class="button"> " " </button>
-                <button class="button"></button>
-                <button class="button"></button>
-                <button class="button"></button>
+        <p>
+            Try to answer the following code related questions within the time limit. 
+            If you get a question wrong you will be deducted 15 seconds from your time.
+        </p>
+
+        <button class="start-button">Start Quiz</button>
+        
+        <container class="quiz">
+            <h2 class="question" id="quiz-questions">Quiz Question</h2>
+
+            <ol>
+            <li><button class="button">answer</button></li>
+            <li><button class="button">answer</button></li>
+            <li><button class="button">answer</button></li>
+            <li><button class="button">answer</button></li>
+            </ol>
         </container>
 
         <container class="landing-page">
@@ -30,5 +41,6 @@
     </main>
 
     <script src="./assets/js/questions.js"></script>
+
 </body>
 </html>
