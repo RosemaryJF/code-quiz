@@ -18,27 +18,28 @@
     </header>
 
     <main>
-        <p>
+        <container id="starting-page" class="hide">
+            <p>
             Try to answer the following code related questions within the time limit. 
             If you get a question wrong you will be deducted 15 seconds from your time.
-        </p>
+            </p>
+        
 
-        <button class="start-button">Start Quiz</button>
+            <button class="start-button">Start Quiz</button>
+        </container>
         
         <container class="quiz">
-            <h2 class="question" id="quiz-questions">Quiz Question</h2>
-
-            <button class="button">answer</button></li>
-            <button class="button">answer</button></li>
-            <button class="button">answer</button></li>
-            <button class="button">answer</button></li>
+            <h2 id="quiz-question"></h2>
+            <div id="answer-options"></div>
         </container>
 
-        <container class="landing-page">
+        <container id="results" class="hide">
+            <button class="submit-button">Submit Result</button>
         </container>
     </main>
 
     <script src="./assets/js/questions.js"></script>
+    <script src="./assets/js/logic.js"></script>
 
 </body>
 </html>

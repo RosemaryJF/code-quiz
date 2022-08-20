@@ -1,19 +1,36 @@
-// var timer = questionEl.length * 15;
-var body = document.body;
-var listEl = document.querySelectorAll("ol");
-var questionEl = document.getElementById("quiz-questions");
-var answersBtn = document.querySelectorAll("li");
-var answersEl = document.getElementsByClassName("button");
+// Variable containg all code quiz questions, answer options, and answer as objects within.
+var questions = [
+    
+    {
+    question: "Commonly used data types DO NOT include:",
+    answerOptions: ["alerts", "strings", "booleans", "numbers"],
+    answer: "alerts"
+    },
 
-questionEl.textContent ="Commonly used data types DO NOT include:";
-answersEl.textContent = ["arrays", "strings", "booleans", "numbers"];
-answersBtn.textContent = (answersEl[0]);
+    {
+    question: "The condition in an if/else statement is enclosed within _______.",
+    answerOptions: ["parentheses", "curly brackets", "square brackets", "quotes"],
+    answer: "parentheses",
+    },
 
-console.log(questionEl);
-console.log(answersEl);
+    {
+    question: "Arrays in JavaScript can be used to store ________.",
+    answerOptions: ["numbers & strings", "other arrays", "booleans", "all of the above"],
+    answer: "all of the above",
+    },
 
-body.appendChild(questionEl);
-body.appendChild(answersBtn);
+    {
+    question: "String values must be enclosed within _______ when being assigned to variables.",
+    answerOptions: ["commas", "curly brackets", "quotes", "parenthese"],
+    answer: "quotes",
+    },
+
+    {
+    question: "A very useful tool used during development and debugging for printing contect to the debugger is:",
+    answerOptions: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+    answer: "console.log",
+    },
+];
 
 
 // Example of quiz option using prompts
