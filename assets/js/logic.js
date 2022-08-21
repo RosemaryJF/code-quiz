@@ -7,27 +7,19 @@ var startBtn = document.getElementById("starting-page");
 var questionEl = document.getElementById("quiz-question");
 var answerEl = document.getElementById("answer-options");
 var sumbitBtn = document.getElementById("submit-button")
-var answerOptions = document.querySelectorAll("answerOptions");
+var answerOptions = document.getElementsByName("answerOptions");
 var questionsEl = document.getElementById("questions");
-// var answerBtn01 = document.createElement("button");
-// var answerBtn02 = document.createElement("button");
-// var answerBtn03 = document.createElement("button");
-// var answerBtn04 = document.createElement("button");
-// var button = document.querySelectorAll("button");
 
-// answerEl.setAttribute("class", "hide");
-// body.appendChild(answerEl);
+// var button = document.querySelectorAll("button");
 
 startBtn.addEventListener("click", function (event) {
     startBtn = event.target;
-     if ("click")
-     startCntnr.setAttribute("style", "display: none");
-     resultsCntnr.setAttribute("style", "display: none");
-     
-     runQuiz()
+        if ("click")
+            startCntnr.setAttribute("style", "display: none");
+            resultsCntnr.setAttribute("style", "display: none");
+        runQuiz()
+        getAnswers()
     });
-     
-     
      
     function runQuiz() {
         var currentQuestion = questions[0];
@@ -35,26 +27,48 @@ startBtn.addEventListener("click", function (event) {
         questionEl.textContent = currentQuestion.question;
     };
 
+    // function makeBtn () {
+    //     var answerBtn = document.createElement("button");
+    //     for (i = 0; i < answerOptions.length; i++);
+    //     answerBtn = answerOptions.length;
+    //     document.body.appendChild(answerEl);
+    //     // answerEl.setAttribute("class", "answerOptions");
+    //     // answerEl.setAttribute("value", answerOptions);
+    // } makeBtn();
    
     function getAnswers() {
-        answerEl.removeAttribute("class", "hide");
-        var currentAnswers = questions[0];
-            (console.log(currentAnswers));
-            answerEl.textContent = currentAnswers.answerOptions;
-        function makeButtons () {
-                var answerButtons = document.createElement("button");
-                for (i = 0; i < answerOptions.length; i++)
-                answerButtons.setAttribute("class", "answerOptions");
-                answerButtons.setAttribute("value", answerOptions);
-        }
-        makeButtons()
-    };
-    
-   
-   getAnswers();
-    
+        for (i = 0; i = answerOptions.length; i++) {
+            var currentAnswers = questions[answerOptions[i]];
+            console.log(currentAnswers);
+        var answerBtn = document.getElementsByClassName("answer-button");
+            answerBtn.addEventListener("click", () => {
+            if (answerBtn.innerText === "") {
+            answerBtn.innerText = "answerOptions";
+        }})
 
-    
 
-    
+        // var currentAnswers 
 
+        // // = questions.answerOptions[0];
+        //     (console.log(currentAnswers));
+        //     // answerBtn.textContent(answerOptions);
+        //     answerBtn.textContent(answerOptions);
+    }};
+
+
+    // answerOptions.addEventListener("click", function() {
+    //         if (click === "alerts") {
+    //         console.log("Correct") 
+    //     }
+    //         else if (click !== "alerts") {
+    //         console.log("Incorrect")
+    //     }
+    //     // nextQuestion()
+    // })
+    
+    // function nextQuestion() {
+    //     if (console.log("Correct" || "Incorrect"));
+    //     var currentQuestion = questions[1];
+    //     (console.log(currentQuestion));
+    //     questionEl.textContent = currentQuestion.question;
+    // };

@@ -1,0 +1,4 @@
+container .quiz #answer-options {
+    display: list-item;
+    /* display: col */
+}
