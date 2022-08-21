@@ -43,12 +43,12 @@
         <container id="results">
             <h2 id="result-title">All Done!</h2>
             <p>Your final score is <span id="score"></span></p>
-            <form action="" method="get" class="user-initial">
+            <form action="./highscores.html" method="get" class="user-initial">
                 <div class="user-initial">
                   <label for="initial">Enter your initials here: </label>
-                  <input type="text" name="name" id="name" required>
+                  <input type="text" name="name" id="name" required><span id="userInput"></span>
                 </div>
-                <div class="user-initial">
+                <div class="user-initial" id="submit-button">
                     <input type="submit" value="Submit">
                   </div>
                 </form>

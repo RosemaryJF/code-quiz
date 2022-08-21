@@ -203,12 +203,14 @@ startBtn.addEventListener("click", function (event) {
         scoreEl.textContent = timeLeft;
         localStorage.setItem("score", JSON.stringify(timeLeft));
         
-        var userInitial = document.getElementById("name");
+        var userInitial = document.getElementById("user-input");
+        console.log(userInitial);
         localStorage.setItem("name", JSON.stringify(userInitial));
 
+    };
+
+    function highscores() {
         var submitBtn = document.getElementById("submit-button");
         submitBtn.addEventListener("click", function(event) {
-            event.preventDefault();
-        });
-
-    };
+        event.preventDefault();
+    })};
