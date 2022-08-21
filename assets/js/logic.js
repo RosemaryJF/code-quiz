@@ -11,64 +11,166 @@ var answerOptions = document.getElementsByName("answerOptions");
 var questionsEl = document.getElementById("questions");
 
 // var button = document.querySelectorAll("button");
+function hideAnswers () {
+quizCntnr.setAttribute("style", "display: none");
+resultsCntnr.setAttribute("style", "display: none");
+};
+hideAnswers()
 
 startBtn.addEventListener("click", function (event) {
     startBtn = event.target;
         if ("click")
+            quizCntnr.removeAttribute("style", "display: none");
             startCntnr.setAttribute("style", "display: none");
-            resultsCntnr.setAttribute("style", "display: none");
         runQuiz()
         getAnswers()
     });
-     
+    
     function runQuiz() {
         var currentQuestion = questions[0];
         (console.log(currentQuestion));
         questionEl.textContent = currentQuestion.question;
     };
 
-    // function makeBtn () {
-    //     var answerBtn = document.createElement("button");
-    //     for (i = 0; i < answerOptions.length; i++);
-    //     answerBtn = answerOptions.length;
-    //     document.body.appendChild(answerEl);
-    //     // answerEl.setAttribute("class", "answerOptions");
-    //     // answerEl.setAttribute("value", answerOptions);
-    // } makeBtn();
-   
     function getAnswers() {
-        for (i = 0; i = answerOptions.length; i++) {
-            var currentAnswers = questions[answerOptions[i]];
-            console.log(currentAnswers);
-        var answerBtn = document.getElementsByClassName("answer-button");
-            answerBtn.addEventListener("click", () => {
-            if (answerBtn.innerText === "") {
-            answerBtn.innerText = "answerOptions";
-        }})
+        var answerOptions = questions[0].answerOptions;
+        console.log(answerOptions);
+        for (var i = 0; i < answerOptions.length; i++) {
+          console.log(answerOptions[i]);
+      
+        var answerBtn = document.getElementsByClassName("answer-button")[i];
+          answerBtn.textContent = answerOptions[i];
 
+        answerBtn.addEventListener("click", function(event) {
+            questions[0].answer = event.target;
+            if ("click" === "1. alerts")
+            console.log("Correct") 
+        
+                else if ("click" !== "1. alerts") 
+                console.log("Incorrect")
 
-        // var currentAnswers 
+                if (console.log("Correct" || "Incorrect"));
+                nextQuestion01()
+                nextAnswer01()
+        })
+    }};
+    
+    function nextQuestion01() {
+        var currentQuestion = questions[1];
+        console.log(currentQuestion);
+        questionEl.textContent = currentQuestion.question; 
+    };
 
-        // // = questions.answerOptions[0];
-        //     (console.log(currentAnswers));
-        //     // answerBtn.textContent(answerOptions);
-        //     answerBtn.textContent(answerOptions);
+    function nextAnswer01() {
+        var answerOptions = questions[1].answerOptions;
+        console.log(answerOptions);
+        for (var i = 0; i < answerOptions.length; i++) {
+          console.log(answerOptions[i]);
+      
+        var answerBtn = document.getElementsByClassName("answer-button")[i];
+          answerBtn.textContent = answerOptions[i];
+
+        answerBtn.addEventListener("click", function(event) {
+            questions[1].answer = event.target;
+            if ("click" === "1. parentheses")
+            console.log("Correct") 
+        
+                else if ("click" !== "1. parentheses") 
+                console.log("Incorrect")
+
+                if (console.log("Correct" || "Incorrect"));
+                nextQuestion02()
+                nextAnswer02()
+        })
+    }};
+    
+    function nextQuestion02() {
+        var currentQuestion = questions[2];
+        console.log(currentQuestion);
+        questionEl.textContent = currentQuestion.question; 
+    };
+
+    function nextAnswer02() {
+        var answerOptions = questions[2].answerOptions;
+        console.log(answerOptions);
+        for (var i = 0; i < answerOptions.length; i++) {
+          console.log(answerOptions[i]);
+      
+        var answerBtn = document.getElementsByClassName("answer-button")[i];
+          answerBtn.textContent = answerOptions[i];
+
+        answerBtn.addEventListener("click", function(event) {
+            questions[2].answer = event.target;
+            if ("click" === "4. all of the above")
+            console.log("Correct") 
+        
+                else if ("click" !== "4. all of the above") 
+                console.log("Incorrect")
+
+                if (console.log("Correct" || "Incorrect"));
+                nextQuestion03()
+                nextAnswer03()
+        })
     }};
 
+    function nextQuestion03() {
+        var currentQuestion = questions[3];
+        console.log(currentQuestion);
+        questionEl.textContent = currentQuestion.question; 
+    };
 
-    // answerOptions.addEventListener("click", function() {
-    //         if (click === "alerts") {
-    //         console.log("Correct") 
-    //     }
-    //         else if (click !== "alerts") {
-    //         console.log("Incorrect")
-    //     }
-    //     // nextQuestion()
-    // })
-    
-    // function nextQuestion() {
-    //     if (console.log("Correct" || "Incorrect"));
-    //     var currentQuestion = questions[1];
-    //     (console.log(currentQuestion));
-    //     questionEl.textContent = currentQuestion.question;
-    // };
+    function nextAnswer03() {
+        var answerOptions = questions[3].answerOptions;
+        console.log(answerOptions);
+        for (var i = 0; i < answerOptions.length; i++) {
+          console.log(answerOptions[i]);
+      
+        var answerBtn = document.getElementsByClassName("answer-button")[i];
+          answerBtn.textContent = answerOptions[i];
+
+        answerBtn.addEventListener("click", function(event) {
+            questions[3].answer = event.target;
+            if ("click" === "3. quotes")
+            console.log("Correct") 
+        
+                else if ("click" !== "3. quotes") 
+                console.log("Incorrect")
+
+                if (console.log("Correct" || "Incorrect"));
+                nextQuestion04()
+                nextAnswer04()
+        })
+    }};
+
+    function nextQuestion04() {
+        var currentQuestion = questions[4];
+        console.log(currentQuestion);
+        questionEl.textContent = currentQuestion.question; 
+    };
+
+    function nextAnswer04() {
+        var answerOptions = questions[4].answerOptions;
+        console.log(answerOptions);
+        for (var i = 0; i < answerOptions.length; i++) {
+          console.log(answerOptions[i]);
+      
+        var answerBtn = document.getElementsByClassName("answer-button")[i];
+          answerBtn.textContent = answerOptions[i];
+
+        answerBtn.addEventListener("click", function(event) {
+            questions[4].answer = event.target;
+            if ("click" === "4. console.log")
+            console.log("Correct") 
+        
+                else if ("click" !== "4. console.log") 
+                console.log("Incorrect")
+
+                if (console.log("Correct" || "Incorrect"));
+                results()
+        })
+    }};
+
+    function results() {
+        quizCntnr.setAttribute("style", "display: none");
+        resultsCntnr.removeAttribute("style", "display: none");
+    }
