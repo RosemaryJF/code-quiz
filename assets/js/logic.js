@@ -1,4 +1,6 @@
 var body = document.body;
+
+
 var startCntnr = document.getElementById("starting-page");
 var quizCntnr = document.getElementById("quiz");
 var resultsCntnr = document.getElementById("results");
@@ -8,9 +10,26 @@ var questionEl = document.getElementById("quiz-question");
 var answerEl = document.getElementById("answer-options");
 var sumbitBtn = document.getElementById("submit-button")
 var answerOptions = document.getElementsByName("answerOptions");
-var questionsEl = document.getElementById("questions");
+var questionsOptions = document.getElementById("questions");
 
-// var button = document.querySelectorAll("button");
+var timerEl = document.getElementById("time");
+var timeLeft = (questions.length * 15)
+
+function setTimer (){
+    
+    var timerInterval = setInterval(function(){
+        if (timeLeft > 1) {
+        timerEl.textContent = timeLeft;
+        timeLeft--
+        } else if (console.log === "Incorrect") {
+        timeLeft - 15; 
+        } else if (timeLeft === 0) {
+            clearInterval(timerInterval);
+            results()
+        };
+    }, 1000)}
+
+
 function hideAnswers () {
 quizCntnr.setAttribute("style", "display: none");
 resultsCntnr.setAttribute("style", "display: none");
@@ -22,14 +41,16 @@ startBtn.addEventListener("click", function (event) {
         if ("click")
             quizCntnr.removeAttribute("style", "display: none");
             startCntnr.setAttribute("style", "display: none");
+        setTimer()
         runQuiz()
         getAnswers()
-    });
+});
     
     function runQuiz() {
         var currentQuestion = questions[0];
         (console.log(currentQuestion));
         questionEl.textContent = currentQuestion.question;
+        
     };
 
     function getAnswers() {
@@ -167,10 +188,14 @@ startBtn.addEventListener("click", function (event) {
 
                 if (console.log("Correct" || "Incorrect"));
                 results()
+                clearInterval(interval);
         })
     }};
 
     function results() {
         quizCntnr.setAttribute("style", "display: none");
         resultsCntnr.removeAttribute("style", "display: none");
-    }
+        var scoreEl = document.getElementById("score");
+        scoreEl.textContent = timeLeft;
+
+    };
