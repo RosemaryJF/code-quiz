@@ -16,18 +16,20 @@ var timerEl = document.getElementById("time");
 var timeLeft = (questions.length * 15)
 
 function setTimer (){
-    
     var timerInterval = setInterval(function(){
-        if (timeLeft > 1) {
+        if (timeLeft > 0) {
         timerEl.textContent = timeLeft;
         timeLeft--
         } else if (console.log === "Incorrect") {
         timeLeft - 15; 
+        } else if (results()) {
+            clearInterval(timerInterval);
         } else if (timeLeft === 0) {
             clearInterval(timerInterval);
-            results()
+            results();
         };
-    }, 1000)}
+    }, 1000)
+}
 
 
 function hideAnswers () {
@@ -188,14 +190,25 @@ startBtn.addEventListener("click", function (event) {
 
                 if (console.log("Correct" || "Incorrect"));
                 results()
-                clearInterval(interval);
         })
     }};
 
+
     function results() {
+
         quizCntnr.setAttribute("style", "display: none");
         resultsCntnr.removeAttribute("style", "display: none");
+       
         var scoreEl = document.getElementById("score");
         scoreEl.textContent = timeLeft;
+        localStorage.setItem("score", JSON.stringify(timeLeft));
+        
+        var userInitial = document.getElementById("name");
+        localStorage.setItem("name", JSON.stringify(userInitial));
+
+        var submitBtn = document.getElementById("submit-button");
+        submitBtn.addEventListener("click", function(event) {
+            event.preventDefault();
+        });
 
     };
