@@ -1,6 +1,5 @@
 var body = document.body;
 
-
 var startCntnr = document.getElementById("starting-page");
 var quizCntnr = document.getElementById("quiz");
 var resultsCntnr = document.getElementById("results");
@@ -15,12 +14,14 @@ var questionsOptions = document.getElementById("questions");
 var timerEl = document.getElementById("time");
 var timeLeft = (questions.length * 15)
 
+var correctAnswer = document.querySelectorAll("questions.answer");
+
 function setTimer (){
     var timerInterval = setInterval(function(){
         if (timeLeft > 0) {
         timerEl.textContent = timeLeft;
         timeLeft--
-        } else if (console.log === "Incorrect") {
+        } else if ("Incorrect") {
         timeLeft - 15; 
         } else if (results()) {
             clearInterval(timerInterval);
@@ -61,22 +62,27 @@ startBtn.addEventListener("click", function (event) {
         for (var i = 0; i < answerOptions.length; i++) {
           console.log(answerOptions[i]);
       
-        var answerBtn = document.getElementsByClassName("answer-button")[i];
-          answerBtn.textContent = answerOptions[i];
-
-        answerBtn.addEventListener("click", function(event) {
-            questions[0].answer = event.target;
-            if ("click" === "1. alerts")
-            console.log("Correct") 
-        
-                else if ("click" !== "1. alerts") 
-                console.log("Incorrect")
-
-                if (console.log("Correct" || "Incorrect"));
-                nextQuestion01()
-                nextAnswer01()
-        })
-    }};
+            var answerBtn = document.getElementsByClassName("answer-button")[i];
+            console.log(answerBtn);
+            answerBtn.innerHTML = answerOptions[i];
+            
+            var correctAnswer = questions[0].answer;
+            answerBtn.addEventListener("click", function(event) {
+                console.log(event.target.textContent);
+                if (event.target.textContent === correctAnswer){
+                    console.log("Correct")
+                }
+                else if (event.target.textContent !== correctAnswer){ 
+                    console.log("Incorrect")
+                    timeLeft - 15
+                }
+                if (event.target.textContent === "Correct" || "Incorrect") {
+                    nextQuestion01();
+                    nextAnswer01();
+                }
+            })
+        }
+    };
     
     function nextQuestion01() {
         var currentQuestion = questions[1];
@@ -93,12 +99,13 @@ startBtn.addEventListener("click", function (event) {
         var answerBtn = document.getElementsByClassName("answer-button")[i];
           answerBtn.textContent = answerOptions[i];
 
+        var correctAnswer = questions[1].answer;
         answerBtn.addEventListener("click", function(event) {
             questions[1].answer = event.target;
-            if ("click" === "1. parentheses")
+            if (event.target.textContent)
             console.log("Correct") 
         
-                else if ("click" !== "1. parentheses") 
+                else if (event.target.textContent !== correctAnswer) 
                 console.log("Incorrect")
 
                 if (console.log("Correct" || "Incorrect"));
@@ -122,12 +129,13 @@ startBtn.addEventListener("click", function (event) {
         var answerBtn = document.getElementsByClassName("answer-button")[i];
           answerBtn.textContent = answerOptions[i];
 
+        var correctAnswer = questions[2].answer;
         answerBtn.addEventListener("click", function(event) {
             questions[2].answer = event.target;
-            if ("click" === "4. all of the above")
+            if (event.target.textContent)
             console.log("Correct") 
         
-                else if ("click" !== "4. all of the above") 
+                else if (event.target.textContent !== correctAnswer) 
                 console.log("Incorrect")
 
                 if (console.log("Correct" || "Incorrect"));
@@ -151,12 +159,13 @@ startBtn.addEventListener("click", function (event) {
         var answerBtn = document.getElementsByClassName("answer-button")[i];
           answerBtn.textContent = answerOptions[i];
 
-        answerBtn.addEventListener("click", function(event) {
+        var correctAnswer = questions[3].answer;
+          answerBtn.addEventListener("click", function(event) {
             questions[3].answer = event.target;
-            if ("click" === "3. quotes")
+            if (event.target.textContent)
             console.log("Correct") 
         
-                else if ("click" !== "3. quotes") 
+                else if (event.target.textContent !== correctAnswer) 
                 console.log("Incorrect")
 
                 if (console.log("Correct" || "Incorrect"));
@@ -180,12 +189,13 @@ startBtn.addEventListener("click", function (event) {
         var answerBtn = document.getElementsByClassName("answer-button")[i];
           answerBtn.textContent = answerOptions[i];
 
+        var correctAnswer  = questions[4].answer;
         answerBtn.addEventListener("click", function(event) {
             questions[4].answer = event.target;
-            if ("click" === "4. console.log")
+            if (event.target.textContent)
             console.log("Correct") 
         
-                else if ("click" !== "4. console.log") 
+                else if (event.target.textContent !== correctAnswer) 
                 console.log("Incorrect")
 
                 if (console.log("Correct" || "Incorrect"));
