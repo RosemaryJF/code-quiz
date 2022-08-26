@@ -39,221 +39,213 @@ startBtn.addEventListener("click", function (event) {
         quizCntnr.removeAttribute("style", "display: none");
         startCntnr.setAttribute("style", "display: none");
         setTimer()
-        runQuiz()
-        getAnswers()
-        return;
+        getQuestion()
+        checkAnswer()
     }
 });
   
-function runQuiz() {
-        var currentQuestion = questions[0].question;
-        (console.log(currentQuestion));
-        var questionEl = document.getElementById("quiz-question");
-        questionEl.textContent = currentQuestion;
-};
-
-function getAnswers() {
-    var answerOptions = questions[0].answerOptions;
-    for (var i = 0; i < answerOptions.length; i++) {
-    var answerBtn = document.getElementsByClassName("answer-button")[i];
-    answerBtn.textContent = answerOptions[i];
-            
-        var correctAnswer00 = questions[0].answer;
-        console.log(correctAnswer00);
-
-        answerBtn.addEventListener("click", function(event) {
-            event.stopPropagation()
-            console.log(event.currentTarget.textContent);
-            
-            if (event.currentTarget.textContent === correctAnswer00){
-                console.log("Correct!")
-                nextQuestion();
-                nextAnswer();
-                return;
-            }
-                
-            else if (event.currentTarget.textContent !== correctAnswer00) {
-                console.log("Incorrect.")
-                nextQuestion();
-                nextAnswer();
-                return;
-                        // if (timeLeft > 0) {
-                        //     timeLeft -= 15;
-                        // }
-                        // if (timeLeft === 0) {
-                        //     results()
-                        // }
-                }
-        }) 
-    } 
-}; 
+function getQuestion() {
     
-function nextQuestion() {
-    var currentQuestion = questions[1].question;
-    console.log(currentQuestion);
+    for (var i = 0; i < questions.length; i++) {
+    var currentQuestion = questions[i];
+
     var questionEl = document.getElementById("quiz-question");
-    questionEl.textContent = currentQuestion; 
-};
+    questionEl.textContent = currentQuestion.question;
 
-function nextAnswer() {
-    let answerOptions = questions[1].answerOptions;
-    for (var i = 0; i < answerOptions.length; i++) {
-    let answerBtn = document.getElementsByClassName("answer-button")[i];
-    answerBtn.textContent = answerOptions[i];
-            
-        let correctAnswer01 = questions[1].answer;
-        console.log(correctAnswer01);
-            
-        answerBtn.addEventListener("click", function(event) {
-            event.stopPropagation();
-            console.log(event.target.textContent);
-                
-            if (event.target.textContent === correctAnswer01){
-                console.log("Correct");
-                nextQuestion02();
-                nextAnswer02();
-                return;
-            }
-                
-            else if (event.target.textContent !== correctAnswer01) { 
-                console.log("Incorrect");
-                nextQuestion02();
-                nextAnswer02();
-                return;
-                
-                        // if (timeLeft > 0) {
-                        //     timeLeft -= 15;
-                        // }
-                        // if (timeLeft === 0) {
-                        //     results()
-                        // }
-            }
-        })
-    }
-};
-    
-function nextQuestion02() {
-    var currentQuestion = questions[2].question;
-    console.log(currentQuestion);
-    var questionEl = document.getElementById("quiz-question");
-    questionEl.textContent = currentQuestion; 
-};
+    // answerBTN.textContent = '';
 
-function nextAnswer02() {
-    let answerOptions = questions[2].answerOptions;
-    for (let i = 0; i < answerOptions.length; i++) {
-    let answerBtn = document.getElementsByClassName("answer-button")[i];
-    answerBtn.textContent = answerOptions[i];
-
-        let correctAnswer02 = questions[2].answer;
-        console.log(correctAnswer02);
+        for (var i = 0; i < currentQuestion.answerOptions.length; i++) {
         
-        answerBtn.addEventListener("click", function(event) {
-            event.stopPropagation();
-            console.log(event.currentTarget.textContent);
-
-            if (event.currentTarget.textContent === correctAnswer02) {
-                console.log("Correct") ;
-                nextQuestion03();
-                nextAnswer03();
-            }
-
-            else if (event.currentTarget.textContent !== correctAnswer02) {
-                console.log("Incorrect");
-                nextQuestion03();
-                nextAnswer03();
-                return;
-                // if (timeLeft > 0) {
-                // timeLeft -= 15;
-                // }
-                // if (timeLeft === 0) {
-                // results()
-                // }
-                }
-        })
+        // create new button for each choice
+            var answerBtn = document.createElement("button");
+            answerBtn.textContent = currentQuestion.answerOptions[i];
+            document.body.appendChild(answerBtn);
+        // var choice = currentQuestion.answerOptions[i];
+        }
     }
-};
-
-function nextQuestion03() {
-    var currentQuestion = questions[3].question;
-    console.log(currentQuestion);
-    var questionEl = document.getElementById("quiz-question");
-    questionEl.textContent = currentQuestion; 
-};
-
-function nextAnswer03() {
-    var answerOptions = questions[3].answerOptions;
-    for (var i = 0; i < answerOptions.length; i++) {
-    var answerBtn = document.getElementsByClassName("answer-button")[i];
-    answerBtn.textContent = answerOptions[i];
-
-        var correctAnswer03 = questions[3].answer;
-        console.log(correctAnswer03);
-
-        answerBtn.addEventListener("click", function(event) {
-            event.stopPropagation();
-            console.log(event.target.textContent);
-           
-            if (event.target.textContent === correctAnswer03) {
+    checkAnswer()
+    
+    var correctAnswer = questions[i].answer;
+    console.log(correctAnswer);
+      
+    function checkAnswer(event) {    
+    answerBtn.addEventListener("click", event);
+        console.log(event.target.textContent);
+        
+        if (answerBtn.value === correctAnswer){
                 console.log("Correct");
-                nextQuestion04();
-                nextAnswer04();
-            }
-
-            else if (event.target.textContent !== correctAnswer03) {
-                console.log("Incorrect");
-                nextQuestion04();
-                nextAnswer04();
-                return;
-                    // if (timeLeft > 0) {
-                    //     timeLeft -= 15;
-                    // }
-                    // if (timeLeft === 0) {
-                    //     results()
-                    // }
-            }
-        })
+        }
     }
-};
+}
 
-function nextQuestion04() {
-    var currentQuestion = questions[4];
-    console.log(currentQuestion);
-    var questionEl = document.getElementById("quiz-question");
-    questionEl.textContent = currentQuestion.question; 
-};
 
-function nextAnswer04() {
-    var answerOptions = questions[4].answerOptions;
-    for (var i = 0; i < answerOptions.length; i++) {
-    var answerBtn = document.getElementsByClassName("answer-button")[i];
-    answerBtn.textContent = answerOptions[i];
+                
+        //     else if (event.target.textContent !== correctAnswer01) { 
+        //         console.log("Incorrect");
+        //         nextQuestion02();
+        //         nextAnswer02();
+        //         return;
+        //     };
 
-        var correctAnswer04  = questions[4].answer;
-        console.log(correctAnswer04);
+// function nextAnswer() {
+//     let answerOptions = questions[1].answerOptions;
+//     for (var i = 0; i < answerOptions.length; i++) {
+//     let answerBtn = document.getElementsByClassName("answer-button")[i];
+//     answerBtn.textContent = answerOptions[i];
             
-        answerBtn.addEventListener("click", function(event) {
-            event.stopPropagation();
-            console.log(event.target.textContent);
+//         let correctAnswer01 = questions[1].answer;
+//         console.log(correctAnswer01);
             
-            if (event.target.textContent === correctAnswer04) {
-                console.log("Correct") ;
-                results();
-            }
+//         answerBtn.addEventListener("click", function(event) {
+//             event.stopPropagation();
+//             console.log(event.target.textContent);
+                
+//             if (event.target.textContent === correctAnswer01){
+//                 console.log("Correct");
+//                 nextQuestion02();
+//                 nextAnswer02();
+//                 return;
+//             }
+                
+//             else if (event.target.textContent !== correctAnswer01) { 
+//                 console.log("Incorrect");
+//                 nextQuestion02();
+//                 nextAnswer02();
+//                 return;
+                
+//                         // if (timeLeft > 0) {
+//                         //     timeLeft -= 15;
+//                         // }
+//                         // if (timeLeft === 0) {
+//                         //     results()
+//                         // }
+//             }
+//         })
+//     }
+// };
+    
+// function nextQuestion02() {
+//     var currentQuestion = questions[2].question;
+//     console.log(currentQuestion);
+//     var questionEl = document.getElementById("quiz-question");
+//     questionEl.textContent = currentQuestion; 
+// };
 
-            else if (event.target.textContent !== correctAnswer04) {
-                console.log("Incorrect");
-                results();
-                    // if (timeLeft > 0) {
-                    //     timeLeft -= 15;
-                    // }
-                    // if (timeLeft === 0) {
-                    //     results()
-                    // }
-            };
-        })
-    }
-};
+// function nextAnswer02() {
+//     let answerOptions = questions[2].answerOptions;
+//     or (let i = 0; i < answerOptions.length; i++) {
+//     let answerBtn = document.getElementsByClassName("answer-button")[i];
+//     answerBtn.textContent = answerOptions[i];
+
+//         let correctAnswer02 = questions[2].answer;
+//         console.log(correctAnswer02);
+        
+//         answerBtn.addEventListener("click", function(event) {
+//             event.stopPropagation();
+//             console.log(event.currentTarget.textContent);
+
+//             if (event.currentTarget.textContent === correctAnswer02) {
+//                 console.log("Correct") ;
+//                 nextQuestion03();
+//                 nextAnswer03();
+//             }
+
+//             else if (event.currentTarget.textContent !== correctAnswer02) {
+//                 console.log("Incorrect");
+//                 nextQuestion03();
+//                 nextAnswer03();
+//                 return;
+//                 // if (timeLeft > 0) {
+//                 // timeLeft -= 15;
+//                 // }
+//                 // if (timeLeft === 0) {
+//                 // results()
+//                 // }
+//                 }
+//         })
+//     }
+// };
+
+// function nextQuestion03() {
+//     var currentQuestion = questions[3].question;
+//     console.log(currentQuestion);
+//     var questionEl = document.getElementById("quiz-question");
+//     questionEl.textContent = currentQuestion; 
+// };
+
+// function nextAnswer03() {
+//     var answerOptions = questions[3].answerOptions;
+//     for (var i = 0; i < answerOptions.length; i++) {
+//     var answerBtn = document.getElementsByClassName("answer-button")[i];
+//     answerBtn.textContent = answerOptions[i];
+
+//         var correctAnswer03 = questions[3].answer;
+//         console.log(correctAnswer03);
+
+//         answerBtn.addEventListener("click", function(event) {
+//             event.stopPropagation();
+//             console.log(event.target.textContent);
+           
+//             if (event.target.textContent === correctAnswer03) {
+//                 console.log("Correct");
+//                 nextQuestion04();
+//                 nextAnswer04();
+//             }
+
+//             else if (event.target.textContent !== correctAnswer03) {
+//                 console.log("Incorrect");
+//                 nextQuestion04();
+//                 nextAnswer04();
+//                 return;
+//                     // if (timeLeft > 0) {
+//                     //     timeLeft -= 15;
+//                     // }
+//                     // if (timeLeft === 0) {
+//                     //     results()
+//                     // }
+//             }
+//         })
+//     }
+// };
+
+// function nextQuestion04() {
+//     var currentQuestion = questions[4];
+//     console.log(currentQuestion);
+//     var questionEl = document.getElementById("quiz-question");
+//     questionEl.textContent = currentQuestion.question; 
+// };
+
+// function nextAnswer04() {
+//     var answerOptions = questions[4].answerOptions;
+//     for (var i = 0; i < answerOptions.length; i++) {
+//     var answerBtn = document.getElementsByClassName("answer-button")[i];
+//     answerBtn.textContent = answerOptions[i];
+
+//         var correctAnswer04  = questions[4].answer;
+//         console.log(correctAnswer04);
+            
+//         answerBtn.addEventListener("click", function(event) {
+//             event.stopPropagation();
+//             console.log(event.target.textContent);
+            
+//             if (event.target.textContent === correctAnswer04) {
+//                 console.log("Correct") ;
+//                 results();
+//             }
+
+//             else if (event.target.textContent !== correctAnswer04) {
+//                 console.log("Incorrect");
+//                 results();
+//                     // if (timeLeft > 0) {
+//                     //     timeLeft -= 15;
+//                     // }
+//                     // if (timeLeft === 0) {
+//                     //     results()
+//                     // }
+//             };
+//         })
+//     }
+// };
 
 
 function results() {
