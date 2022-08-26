@@ -7,34 +7,25 @@ var resultsCntnr = document.getElementById("results");
 var startBtn = document.getElementById("starting-page");
 var sumbitBtn = document.getElementById("submit-button");
 
-var questionEl = document.getElementById("quiz-question");
-var questionsOptions = document.getElementById("questions");
-
-var answerEl = document.getElementById("answer-options");
-var answerOptions = document.getElementsByName("answerOptions");
-
 var timerEl = document.getElementById("time");
-var timeLeft = (questions.length * 15)
+var timeLeft = (questions.length * 15);
 
-function setTimer (){
+function setTimer() {
     var timerInterval = setInterval(function(){
         if (timeLeft > 0) {
         timerEl.textContent = timeLeft;
         timeLeft--
         } 
-            // else if ("Incorrect") {
-            // timeLeft -= 15; 
+            // else if (timeLeft < 0) {
+            //     clearInterval(timerInterval);
+            //     results();
+            // }
+            // else if (results()) {
+            //     clearInterval(timerInterval);
             // } 
-            else if (results()) {
-            clearInterval(timerInterval);
-            } 
-            else if (timeLeft < 0) {
-            clearInterval(timerInterval);
-            results();
-            };
+            
     }, 1000)
-}
-
+};
 
 function hideQuiz () {
 quizCntnr.setAttribute("style", "display: none");
@@ -43,154 +34,216 @@ resultsCntnr.setAttribute("style", "display: none");
 hideQuiz()
 
 startBtn.addEventListener("click", function (event) {
-    startBtn = event.target;
-        if ("click")
-            quizCntnr.removeAttribute("style", "display: none");
-            startCntnr.setAttribute("style", "display: none");
+    event.stopPropagation;
+    if ("click") {
+        quizCntnr.removeAttribute("style", "display: none");
+        startCntnr.setAttribute("style", "display: none");
         setTimer()
         runQuiz()
         getAnswers()
+        return;
+    }
 });
-    
-    function runQuiz() {
-        var currentQuestion = questions[0];
-        // (console.log(currentQuestion));
-        questionEl.textContent = currentQuestion.question;
-    };
+  
+function runQuiz() {
+        var currentQuestion = questions[0].question;
+        (console.log(currentQuestion));
+        var questionEl = document.getElementById("quiz-question");
+        questionEl.textContent = currentQuestion;
+};
 
-    function getAnswers() {
-        var answerOptions = questions[0].answerOptions;
-        // console.log(answerOptions);
-        for (var i = 0; i < answerOptions.length; i++) {
-        //   console.log(answerOptions[i]);
-            var answerBtn = document.getElementsByClassName("answer-button")[i];
-            answerBtn.innerHTML = answerOptions[i];
+function getAnswers() {
+    var answerOptions = questions[0].answerOptions;
+    for (var i = 0; i < answerOptions.length; i++) {
+    var answerBtn = document.getElementsByClassName("answer-button")[i];
+    answerBtn.textContent = answerOptions[i];
             
-            var correctAnswer = questions[0].answer;
-            answerBtn.addEventListener("click", function(event) {
-                console.log(event.target.textContent);
-                if (event.target.textContent === correctAnswer){
-                    console.log("Correct")
-                }
-                
-                    else if (event.target.textContent != correctAnswer) { 
-                        console.log("Incorrect")
-                        if (timeLeft > 0) {
-                            timeLeft -= 15;
-                        }
-                        if (timeLeft === 0) {
-                            results()
-                        }
-                    }
+        var correctAnswer00 = questions[0].answer;
+        console.log(correctAnswer00);
 
-                if (event.target.textContent === "Correct" || "Incorrect") {
-                    nextQuestion01();
-                    nextAnswer01();
-                }
-            })
-        }
-    };
-    
-    function nextQuestion01() {
-        var currentQuestion = questions[1];
-        console.log(currentQuestion);
-        questionEl.textContent = currentQuestion.question; 
-    };
-
-    function nextAnswer01() {
-        var answerOptions = questions[1].answerOptions;
-        console.log(answerOptions);
-        for (var i = 0; i < answerOptions.length; i++) {
-          console.log(answerOptions[i]);
-      
-        var answerBtn = document.getElementsByClassName("answer-button")[i];
-        console.log(answerBtn);
-          answerBtn.textContent = answerOptions[i];
-
-        var correctAnswer = questions[1].answer;
-        console.log(correctAnswer);
         answerBtn.addEventListener("click", function(event) {
-            if (event.target.textContent === correctAnswer)
-            console.log("Correct") 
-        
-            else if (event.target.textContent != correctAnswer) {
-                console.log("Incorrect")
-                    // if (timeLeft > 0) {
-                    // timeLeft -= 15;
-                    // }
-                    // if (timeLeft === 0) {
-                    // results()
-                    // }
+            event.stopPropagation()
+            console.log(event.currentTarget.textContent);
+            
+            if (event.currentTarget.textContent === correctAnswer00){
+                console.log("Correct!")
+                nextQuestion();
+                nextAnswer();
+                return;
+            }
+                
+            else if (event.currentTarget.textContent !== correctAnswer00) {
+                console.log("Incorrect.")
+                nextQuestion();
+                nextAnswer();
+                return;
+                        // if (timeLeft > 0) {
+                        //     timeLeft -= 15;
+                        // }
+                        // if (timeLeft === 0) {
+                        //     results()
+                        // }
                 }
+        }) 
+    } 
+}; 
+    
+function nextQuestion() {
+    var currentQuestion = questions[1].question;
+    console.log(currentQuestion);
+    var questionEl = document.getElementById("quiz-question");
+    questionEl.textContent = currentQuestion; 
+};
 
-            if (event.target.textContent === "Correct" || "Incorrect") {
+function nextAnswer() {
+    let answerOptions = questions[1].answerOptions;
+    for (var i = 0; i < answerOptions.length; i++) {
+    let answerBtn = document.getElementsByClassName("answer-button")[i];
+    answerBtn.textContent = answerOptions[i];
+            
+        let correctAnswer01 = questions[1].answer;
+        console.log(correctAnswer01);
+            
+        answerBtn.addEventListener("click", function(event) {
+            event.stopPropagation();
+            console.log(event.target.textContent);
+                
+            if (event.target.textContent === correctAnswer01){
+                console.log("Correct");
                 nextQuestion02();
                 nextAnswer02();
-                }
-            })
-        }
-    };
+                return;
+            }
+                
+            else if (event.target.textContent !== correctAnswer01) { 
+                console.log("Incorrect");
+                nextQuestion02();
+                nextAnswer02();
+                return;
+                
+                        // if (timeLeft > 0) {
+                        //     timeLeft -= 15;
+                        // }
+                        // if (timeLeft === 0) {
+                        //     results()
+                        // }
+            }
+        })
+    }
+};
     
-    function nextQuestion02() {
-        var currentQuestion = questions[2];
-        console.log(currentQuestion);
-        questionEl.textContent = currentQuestion.question; 
-    };
+function nextQuestion02() {
+    var currentQuestion = questions[2].question;
+    console.log(currentQuestion);
+    var questionEl = document.getElementById("quiz-question");
+    questionEl.textContent = currentQuestion; 
+};
 
-    function nextAnswer02() {
-        var answerOptions = questions[2].answerOptions;
-        console.log(answerOptions);
-        for (var i = 0; i < answerOptions.length; i++) {
-          console.log(answerOptions[i]);
-      
-        var answerBtn = document.getElementsByClassName("answer-button")[i];
-          answerBtn.textContent = answerOptions[i];
+function nextAnswer02() {
+    let answerOptions = questions[2].answerOptions;
+    for (let i = 0; i < answerOptions.length; i++) {
+    let answerBtn = document.getElementsByClassName("answer-button")[i];
+    answerBtn.textContent = answerOptions[i];
 
-        var correctAnswer = questions[2].answer;
-        answerBtn.addEventListener("click", function(event) {
-            if (event.target.textContent === correctAnswer)
-            console.log("Correct") 
+        let correctAnswer02 = questions[2].answer;
+        console.log(correctAnswer02);
         
-            else if (event.target.textContent !== correctAnswer) {
-            console.log("Incorrect")
+        answerBtn.addEventListener("click", function(event) {
+            event.stopPropagation();
+            console.log(event.currentTarget.textContent);
+
+            if (event.currentTarget.textContent === correctAnswer02) {
+                console.log("Correct") ;
+                nextQuestion03();
+                nextAnswer03();
+            }
+
+            else if (event.currentTarget.textContent !== correctAnswer02) {
+                console.log("Incorrect");
+                nextQuestion03();
+                nextAnswer03();
+                return;
                 // if (timeLeft > 0) {
                 // timeLeft -= 15;
                 // }
                 // if (timeLeft === 0) {
                 // results()
                 // }
+                }
+        })
+    }
+};
+
+function nextQuestion03() {
+    var currentQuestion = questions[3].question;
+    console.log(currentQuestion);
+    var questionEl = document.getElementById("quiz-question");
+    questionEl.textContent = currentQuestion; 
+};
+
+function nextAnswer03() {
+    var answerOptions = questions[3].answerOptions;
+    for (var i = 0; i < answerOptions.length; i++) {
+    var answerBtn = document.getElementsByClassName("answer-button")[i];
+    answerBtn.textContent = answerOptions[i];
+
+        var correctAnswer03 = questions[3].answer;
+        console.log(correctAnswer03);
+
+        answerBtn.addEventListener("click", function(event) {
+            event.stopPropagation();
+            console.log(event.target.textContent);
+           
+            if (event.target.textContent === correctAnswer03) {
+                console.log("Correct");
+                nextQuestion04();
+                nextAnswer04();
             }
 
-        if (event.target.textContent === "Correct" || "Incorrect") {
-            nextQuestion03();
-            nextAnswer03();
+            else if (event.target.textContent !== correctAnswer03) {
+                console.log("Incorrect");
+                nextQuestion04();
+                nextAnswer04();
+                return;
+                    // if (timeLeft > 0) {
+                    //     timeLeft -= 15;
+                    // }
+                    // if (timeLeft === 0) {
+                    //     results()
+                    // }
             }
         })
-    }};
+    }
+};
 
-    function nextQuestion03() {
-        var currentQuestion = questions[3];
-        console.log(currentQuestion);
-        questionEl.textContent = currentQuestion.question; 
-    };
+function nextQuestion04() {
+    var currentQuestion = questions[4];
+    console.log(currentQuestion);
+    var questionEl = document.getElementById("quiz-question");
+    questionEl.textContent = currentQuestion.question; 
+};
 
-    function nextAnswer03() {
-        var answerOptions = questions[3].answerOptions;
-        console.log(answerOptions);
-        for (var i = 0; i < answerOptions.length; i++) {
-          console.log(answerOptions[i]);
-      
-        var answerBtn = document.getElementsByClassName("answer-button")[i];
-          answerBtn.textContent = answerOptions[i];
+function nextAnswer04() {
+    var answerOptions = questions[4].answerOptions;
+    for (var i = 0; i < answerOptions.length; i++) {
+    var answerBtn = document.getElementsByClassName("answer-button")[i];
+    answerBtn.textContent = answerOptions[i];
 
-        var correctAnswer = questions[3].answer;
-          answerBtn.addEventListener("click", function(event) {
-            questions[3].answer = event.target;
-            if (event.target.textContent === correctAnswer)
-                console.log("Correct") 
-        
-            else if (event.target.textContent !== correctAnswer) {
-                console.log("Incorrect")
+        var correctAnswer04  = questions[4].answer;
+        console.log(correctAnswer04);
+            
+        answerBtn.addEventListener("click", function(event) {
+            event.stopPropagation();
+            console.log(event.target.textContent);
+            
+            if (event.target.textContent === correctAnswer04) {
+                console.log("Correct") ;
+                results();
+            }
+
+            else if (event.target.textContent !== correctAnswer04) {
+                console.log("Incorrect");
+                results();
                     // if (timeLeft > 0) {
                     //     timeLeft -= 15;
                     // }
@@ -198,73 +251,32 @@ startBtn.addEventListener("click", function (event) {
                     //     results()
                     // }
             };
-
-        if (event.target.textContent === "Correct" || "Incorrect") {
-            nextQuestion04();
-            nextAnswer04();
-            }
         })
-    }};
-
-    function nextQuestion04() {
-        var currentQuestion = questions[4];
-        console.log(currentQuestion);
-        questionEl.textContent = currentQuestion.question; 
-    };
-
-    function nextAnswer04() {
-        var answerOptions = questions[4].answerOptions;
-        console.log(answerOptions);
-        for (var i = 0; i < answerOptions.length; i++) {
-          console.log(answerOptions[i]);
-      
-        var answerBtn = document.getElementsByClassName("answer-button")[i];
-          answerBtn.textContent = answerOptions[i];
-
-        var correctAnswer  = questions[4].answer;
-            answerBtn.addEventListener("click", function(event) {
-            questions[4].answer = event.target;
-            if (event.target.textContent === correctAnswer)
-                console.log("Correct") 
-        
-            else if (event.target.textContent !== correctAnswer) {
-                console.log("Incorrect")
-                    // if (timeLeft > 0) {
-                    //     timeLeft -= 15;
-                    // }
-                    // if (timeLeft === 0) {
-                    //     results()
-                    // }
-            };
-
-            if (event.target.textContent === "Correct" || "Incorrect") {
-                results()
-            };
-        })
-    }};
+    }
+};
 
 
-    function results() {
-
-
-
-        quizCntnr.setAttribute("style", "display: none");
-        resultsCntnr.removeAttribute("style", "display: none");
+function results() {
+    quizCntnr.setAttribute("style", "display: none");
+    resultsCntnr.removeAttribute("style", "display: none");
        
-        var scoreEl = document.getElementById("score");
-            scoreEl.textContent = timeLeft;
-                if (timeLeft < 0)
-                    scoreEl.textContent = 0;
-            localStorage.setItem("score", JSON.stringify(timeLeft));
+    var scoreEl = document.getElementById("score");
+        scoreEl.textContent = timeLeft;
+            if (timeLeft < 0) {
+                scoreEl.textContent = 0;
+                localStorage.setItem("score", JSON.stringify(timeLeft));
+            }
+            
         
-        var userInitial = document.getElementById("user-input");
-            console.log(userInitial);
-            localStorage.setItem("name", JSON.stringify(userInitial));
+        // var userInitial = document.getElementById(input.value);
+        //     console.log(userInitial);
+        //     localStorage.setItem("user-initial", inputname.value);
 
-    };
+};
 
-    function highscores() {
-        var submitBtn = document.getElementById("submit-button");
+function highscores() {
+    var submitBtn = document.getElementById("submit-button");
         submitBtn.addEventListener("click", function(event) {
-        event.preventDefault();
-    })};
+            event.preventDefault();
+        })
+};
