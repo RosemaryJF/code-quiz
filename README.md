@@ -68,7 +68,7 @@ If the user clicks "Clear Highscore" their score/initials disappear from the pag
 
 To view the deployed application just follow the link below!
 
-* 
+* [https://rosemaryjf.github.io/code-quiz/](https://rosemaryjf.github.io/code-quiz/)
 
 ---
 

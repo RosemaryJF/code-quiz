@@ -21,7 +21,7 @@ var clearScrsBtn = document.getElementById("clear-highscores");
 goBackBtn.addEventListener("click", function (event) {
     event.stopPropagation;
     if ("click") {
-        location.href = 'C:/Users/lee/Desktop/BOOTCAMP/Challenges/code-quiz/index.html';
+        location.href = 'https://rosemaryjf.github.io/code-quiz/';
     }
 });
 

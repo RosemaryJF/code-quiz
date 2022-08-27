@@ -295,6 +295,14 @@ function results() {
         console.log(userInitial);
         localStorage.setItem("user-initial", JSON.stringify(initialsInput.value));
 
+    sumbitBtn.addEventListener("click", function (event) {
+            event.stopPropagation;
+            event.preventDefault;
+            if ("click") {
+                location.href = 'https://rosemaryjf.github.io/code-quiz/highscores.html';
+            }
+        });
+
 };
 
 
