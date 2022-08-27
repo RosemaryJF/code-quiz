@@ -1,3 +1,5 @@
+/* The same stylesheet is used in both the index.html and highscores.html */
+/* overriding colour themes of both HTML files */
 :root{
     --btnBackground: #4c55bc;
     --btnBackgroundHover: #8a90db;
@@ -7,6 +9,7 @@
     --secondaryBackground: #4f545c;
 }
 
+/* Body styling both html files*/
 body {
     position: relative;
     margin: 0.5rem;
@@ -16,6 +19,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* header styling both html files */
 header {
     display: flex;
     align-content: space-between;
@@ -24,8 +28,7 @@ header {
     height: 100%;
 }
 
-
-
+/* button styling for every button in the application */
 button {
     display: flex;
     flex-direction: column;
@@ -39,12 +42,14 @@ button {
     margin: 2px;
 }
 
+/* specific padding for highscores header link and countdown timer */
 header .highscores,
 .timer 
 {
     padding: 5px;
 }
 
+/* Main element styling */
 main {
     display: flex;
     flex-direction: column;
@@ -53,25 +58,19 @@ main {
     margin: 10%;
 }
 
+/* All h1's in the main element which is all the quiz questions */
 main h1 {
     font-size: 200%;
     text-align: center;
 }
 
+/* Styling for the specific start-page container */
 main #starting-page {
     justify-content: flex-start;
     text-align: center;
 }
 
-main > div {
-    justify-content: flex-start;
-    display: none;
-}
-
-main > div > * {
-    margin: 1rem;
-}
-
+/* Specific styling for the highscores page header title */
 .scores-page 
 .title
 {
@@ -82,6 +81,7 @@ main > div > * {
     height: 50%;
 }
 
+/* Specific styling for the main body for highscores */
 main .highscores {
     display: flex;
     justify-content: center;
@@ -90,42 +90,11 @@ main .highscores {
     margin: 0;
 }
 
-
+/* Styling for table elements */
 td {
     padding: 10px;
     margin: 0;
     color: var(--btnTextColor);
     background: var(--btnBackgroundHover);
 }
-
-@media screen and (max-width: 992px) {
-    body { 
-      max-width: 100%;
-     }
-
-    #starting.page {
-        justify-content: center;
-    }
-};
-  
-@media screen and (max-width: 768px) {
-    body {
-        max-width: 96%;
-    }
-
-    #starting.page {
-        justify-content: center;
-    }
-};
-  
-  
-@media screen and (max-width: 567px) {
-    body {
-        max-width: 96%;
-    }
-
-    #starting.page {
-        justify-content: center
-    }
-};
   
