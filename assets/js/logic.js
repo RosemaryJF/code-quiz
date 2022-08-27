@@ -299,7 +299,7 @@ function results() {
             event.stopPropagation;
             event.preventDefault;
             if ("click") {
-                location.href = 'https://rosemaryjf.github.io/code-quiz/highscores.html';
+                parent.location = 'https://rosemaryjf.github.io/code-quiz/highscores.html';
             }
         });
 
