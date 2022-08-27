@@ -10,12 +10,20 @@
     <link rel="icon" type="image/x-icon" href="./assets/images/favicon-02.jpg">
 </head>
 <body>
-    <header1>
-        <h1>Coding Quiz Highscores</h1>
-    </header1>
+    <header class = "scores-page">
+        <h1 class = "title">Coding Quiz Highscores</h1>
+    </header>
 
-    <main>
-        <table class="highscores" id="highscores"></table>
+    <main class="highscores" id="highscores">
+        <table >
+            <tr id="score">
+                <td id="user-name"></td>
+                <td id="user-score"></td>
+            </tr>
+        </table>
+
+        <button id="go-back">Go Back</button>
+        <button id="clear-highscores">Clear Highscores</button>
     </main>
 
     <script src="./assets/js/highscores.js"></script>

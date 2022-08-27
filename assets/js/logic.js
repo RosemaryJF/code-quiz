@@ -275,9 +275,5 @@ function results() {
 
 };
 
-// function highscores() {
-//     var submitBtn = document.getElementById("submit-button");
-//         submitBtn.addEventListener("click")
 
-// }
 
