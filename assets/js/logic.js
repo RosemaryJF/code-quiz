@@ -10,6 +10,8 @@ var sumbitBtn = document.getElementById("submit-button");
 var timerEl = document.getElementById("time");
 var timeLeft = (questions.length * 15);
 
+var feedbackEl = document.getElementById("feedback");
+
 function setTimer() {
     var timerInterval = setInterval(function(){
         if (timeLeft > 0) {
